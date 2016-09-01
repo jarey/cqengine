@@ -26,6 +26,7 @@ import com.googlecode.cqengine.testutil.Car;
 import com.googlecode.cqengine.testutil.Car.Color;
 
 import java.util.Collections;
+import java.util.Date;
 
 import static com.googlecode.cqengine.query.QueryFactory.*;
 
@@ -48,11 +49,11 @@ public class CQEngineDemo {
         cars.addIndex(InvertedRadixTreeIndex.onAttribute(Car.MODEL));
         cars.addIndex(SuffixTreeIndex.onAttribute(Car.MODEL));
 
-        cars.add(new Car(1, "Ford",   "Focus",  Color.BLUE,  5, 9000.50, Collections.<String>emptyList()));
-        cars.add(new Car(2, "Ford",   "Fiesta", Color.BLUE,  2, 5000.00, Collections.<String>emptyList()));
-        cars.add(new Car(3, "Ford",   "F-150",  Color.RED,   2, 9500.00, Collections.<String>emptyList()));
-        cars.add(new Car(4, "Honda",  "Civic",  Color.RED,   5, 5000.00, Collections.<String>emptyList()));
-        cars.add(new Car(5, "Toyota", "Prius",  Color.BLACK, 3, 9700.00, Collections.<String>emptyList()));
+        cars.add(new Car(1, "Ford",   "Focus",  Color.BLUE,  5, 9000.50, Collections.<String>emptyList(), new Date()));
+        cars.add(new Car(2, "Ford",   "Fiesta", Color.BLUE,  2, 5000.00, Collections.<String>emptyList(), new Date()));
+        cars.add(new Car(3, "Ford",   "F-150",  Color.RED,   2, 9500.00, Collections.<String>emptyList(), new Date()));
+        cars.add(new Car(4, "Honda",  "Civic",  Color.RED,   5, 5000.00, Collections.<String>emptyList(), new Date()));
+        cars.add(new Car(5, "Toyota", "Prius",  Color.BLACK, 3, 9700.00, Collections.<String>emptyList(), new Date()));
 
         Query<Car> query;
 

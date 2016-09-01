@@ -15,11 +15,12 @@
  */
 package com.googlecode.cqengine.testutil;
 
+import java.util.Date;
+import java.util.List;
+
 import com.googlecode.cqengine.attribute.MultiValueAttribute;
 import com.googlecode.cqengine.attribute.SimpleAttribute;
 import com.googlecode.cqengine.query.option.QueryOptions;
-
-import java.util.List;
 
 /**
  * @author Niall Gallagher
@@ -53,6 +54,10 @@ public class Car {
     public static final MultiValueAttribute<Car, String> FEATURES = new MultiValueAttribute<Car, String>("features") {
         public Iterable<String> getValues(Car car, QueryOptions queryOptions) { return car.features; }
     };
+    
+    public static final SimpleAttribute<Car, Date> FECHA = new SimpleAttribute<Car, Date>("fecha") {
+        public Date getValue(Car car, QueryOptions queryOptions) { return car.date; }
+    };
 
     public enum Color {RED, GREEN, BLUE, BLACK, WHITE}
     final int carId;
@@ -62,8 +67,9 @@ public class Car {
     final int doors;
     final double price;
     final List<String> features;
+    final Date date;
 
-    public Car(int carId, String manufacturer, String model, Color color, int doors, double price, List<String> features) {
+    public Car(int carId, String manufacturer, String model, Color color, int doors, double price, List<String> features,Date fecha) {
         this.carId = carId;
         this.manufacturer = manufacturer;
         this.model = model;
@@ -71,6 +77,7 @@ public class Car {
         this.doors = doors;
         this.price = price;
         this.features = features;
+        this.date = fecha;
     }
 
     public int getCarId() {
@@ -99,6 +106,10 @@ public class Car {
 
     public List<String> getFeatures() {
         return features;
+    }
+    
+    public Date getFecha(){
+    	return date;
     }
 
     @Override

@@ -77,6 +77,8 @@ public class DateMathParser extends ValueParser<Date> {
             if (now != null) {
                 solrParser.setNow(now);
             }
+            //Replace of ' character before letting ApacheSolrDataMathParser do the parsing
+            stringValue = stringValue.replace("'", "");
             return solrParser.parseMath(StringParser.stripQuotes(stringValue));
         }
         catch (Exception e) {
